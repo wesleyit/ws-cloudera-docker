@@ -1,0 +1,75 @@
+version: '2'
+
+services:
+
+  elephant:
+    image: wesleyit/cloudera:latest
+    command: /scripts/startup.sh
+    stdin_open: true
+    tty: true
+    hostname: elephant
+    environment:
+      - IS_NAMENODE=yes
+    volumes:
+      - ./scripts:/scripts
+      - ./elephant/disk1:/disk1
+      - ./elephant/disk2:/disk2
+      - ./shared:/shared
+    networks:
+      - hadoop
+    ports:
+      - 50070:50070
+
+  tiger:
+    image: wesleyit/cloudera:latest
+    command: /scripts/startup.sh
+    stdin_open: true
+    tty: true
+    hostname: tiger
+    environment:
+      - IS_SECNAMENODE=yes
+    volumes:
+      - ./scripts:/scripts
+      - ./tiger/disk1:/disk1
+      - ./tiger/disk2:/disk2
+      - ./shared:/shared
+    networks:
+      - hadoop
+
+  horse:
+    image: wesleyit/cloudera:latest
+    command: /scripts/startup.sh
+    stdin_open: true
+    tty: true
+    hostname: horse
+    environment:
+      - IS_YARNNODE=yes
+    volumes:
+      - ./scripts:/scripts
+      - ./horse/disk1:/disk1
+      - ./horse/disk2:/disk2
+      - ./shared:/shared
+    networks:
+      - hadoop
+    ports:
+      - 8088:8088
+
+  monkey:
+    image: wesleyit/cloudera:latest
+    command: /scripts/startup.sh
+    tty: true
+    hostname: monkey
+    environment:
+      - IS_HISTORYNODE=yes
+    volumes:
+      - ./scripts:/scripts
+      - ./monkey/disk1:/disk1
+      - ./monkey/disk2:/disk2
+      - ./shared:/shared
+    networks:
+      - hadoop
+    ports:
+      - 19888:19888
+
+networks:
+  hadoop:

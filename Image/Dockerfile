@@ -1,0 +1,24 @@
+FROM centos:6
+MAINTAINER Wesley R. Silva <wesley.it@gmail.com>
+
+RUN yum install -y sudo vim
+RUN echo 'training ALL=(ALL) NOPASSWD: ALL' > /etc/sudoers.d/training
+RUN useradd training -m -s /bin/bash -d /home/training
+RUN echo 'training:training' | chpasswd
+
+ADD ./software /home/training/software
+ADD ./cloudera-cdh5.repo /etc/yum.repos.d/
+ADD ./cloudera-manager.repo /etc/yum.repos.d/
+
+RUN yum install -y hadoop-hdfs-datanode \
+			hadoop-hdfs-namenode \
+			hadoop-hdfs-secondarynamenode \
+			hadoop-mapreduce \
+			hadoop-mapreduce-historyserver \
+			hadoop-yarn-nodemanager \
+			hadoop-yarn-resourcemanager
+
+RUN yum install -y oracle-j2sdk1.7
+ENV JAVA_HOME /usr/java/jdk1.7.0_45-cloudera/
+ENV PATH $JAVA_HOME/bin:$PATH
+

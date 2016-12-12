@@ -1,0 +1,5 @@
+[cloudera-cdh5]
+name=Cloudera's Distribution for Hadoop, Version 5
+baseurl=file:///home/training/software/cloudera-cdh5
+gpgcheck = 0
+
