@@ -22,3 +22,9 @@ RUN yum install -y oracle-j2sdk1.7
 ENV JAVA_HOME /usr/java/jdk1.7.0_45-cloudera/
 ENV PATH $JAVA_HOME/bin:$PATH
 
+RUN yum install -y spark-master.noarch  \
+			spark-python.noarch spark-worker.noarch spark-core.noarch
+
+RUN yum install -y hive hive-hbase impala impala-server \
+			impala-state-store impala-catalog impala-shell 
+

@@ -95,3 +95,4 @@ echo 'hdfs ALL=(ALL) NOPASSWD: ALL' > /etc/sudoers.d/hdfs
 
 ## Keep running
 tail -f /var/log/hadoop-*/*
+
