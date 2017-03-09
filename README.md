@@ -20,23 +20,21 @@ do sistema operacional guest.
 Construindo
 -----------
 
-Para usar esta imagem é necessário antes construí-la, e em seguida levantar
+Para usar esta imagem é necessário antes baixá-la do DockerHub, e em seguida levantar
 o cluster usando o `docker-compose`.
 
 1.  Clone o projeto, baixe a pasta com os repositórios da Cloudera
-e construa a imagem:
+e construa a imagem. Ela é grande, tenha paciência =)
 
 ```
 $ git clone https://github.com/wesleyit/ws-cloudera-docker.git
-$ cd ws-cloudera-docker/Image/
-$ wget www.xxx.xxx.xx/xxx/xxxx/xxx.xxx.zip
-$ unzip xxx.xxx.zip
-$ docker build --rm -t wesleyit/ws-cloudera-docker:latest .
+$ cd ws-cloudera-docker/
+$ docker pull wesleyit/cloudera:latest
 ```
 
 2.  Entre no diretorio do Compose e inicie os containers:
 
 ```
-$ cd ../Compose/
+$ cd Compose/
 $ make start
 ```
