@@ -19,7 +19,8 @@ RUN yum install -y hadoop-hdfs-datanode \
 			hadoop-yarn-resourcemanager
 
 RUN yum install -y oracle-j2sdk1.7
-ENV JAVA_HOME /usr/java/jdk1.7.0_45-cloudera/
+ARG JAVA_HOME=/usr/java/jdk1.7.0_45-cloudera
+ENV JAVA_HOME $JAVA_HOME
 ENV PATH $JAVA_HOME/bin:$PATH
 
 RUN yum install -y spark-master.noarch  \
@@ -28,10 +29,14 @@ RUN yum install -y spark-master.noarch  \
 RUN yum install -y hive hive-hbase impala impala-server \
 			impala-state-store impala-catalog impala-shell 
 
-# -- This is new
-
 RUN yum install -y sqoop mysql-connector-java mysql
 RUN ln -s /usr/share/java/mysql-connector-java.jar /usr/lib/sqoop/lib/
 
 RUN yum install -y flume-ng flume-ng-agent
+
+RUN	cd /opt && \
+		curl -O http://ftp.unicamp.br/pub/apache/kafka/0.10.2.0/kafka_2.12-0.10.2.0.tgz && \
+		tar -zxvf kafka_2.12-0.10.2.0.tgz && \
+		rm -f kafka_2.12-0.10.2.0.tgz
+ENV PATH=$PATH:/opt/kafka_2.12-0.10.2.0/bin
 
