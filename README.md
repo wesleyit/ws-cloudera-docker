@@ -23,8 +23,9 @@ Construindo
 Para usar esta imagem é necessário antes baixá-la do DockerHub, e em seguida levantar
 o cluster usando o `docker-compose`.
 
-1.  Clone o projeto, baixe a pasta com os repositórios da Cloudera
-e construa a imagem. Ela é grande, tenha paciência =)
+1.  Clone o projeto, baixe a imagem do Dockerhub e inicie 
+o cluster. A imagem é grande e demora um pouco para baixar, 
+tome um café enquanto ela é transferida do Dockerhub para a sua máquina =D
 
 ```
 $ git clone https://github.com/wesleyit/ws-cloudera-docker.git
