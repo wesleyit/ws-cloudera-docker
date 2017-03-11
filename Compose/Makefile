@@ -12,6 +12,9 @@ stop:
 clean: stop
 			sudo rm -rf elephant/* tiger/* horse/* monkey/*
 
+cleanall: stop
+			sudo rm -rf elephant/* tiger/* horse/* monkey/* mysqldb/*
+
 shell:
 			docker-compose exec --user hdfs elephant bash
 
