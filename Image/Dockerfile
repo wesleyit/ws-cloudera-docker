@@ -34,9 +34,14 @@ RUN ln -s /usr/share/java/mysql-connector-java.jar /usr/lib/sqoop/lib/
 
 RUN yum install -y flume-ng flume-ng-agent
 
+RUN yum install -y java-1.8.0-openjdk-devel
 RUN	cd /opt && \
 		curl -O http://ftp.unicamp.br/pub/apache/kafka/0.10.2.0/kafka_2.12-0.10.2.0.tgz && \
 		tar -zxvf kafka_2.12-0.10.2.0.tgz && \
 		rm -f kafka_2.12-0.10.2.0.tgz
 ENV PATH=$PATH:/opt/kafka_2.12-0.10.2.0/bin
+RUN echo export JAVA_HOME=/usr/lib/jvm/java > /usr/local/bin/activate_openjdk_8.sh
+RUN echo export PATH=/usr/lib/jvm/java/bin:$PATH >> /usr/local/bin/activate_openjdk_8.sh
+RUN chmod a+x /usr/local/bin/activate_openjdk_8.sh
+RUN echo "alias activate_openjdk_8='source /usr/local/bin/activate_openjdk_8.sh'" >> $HOME/.bashrc
 
