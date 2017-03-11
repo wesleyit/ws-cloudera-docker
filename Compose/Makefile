@@ -10,7 +10,7 @@ stop:
 			docker-compose down
 
 clean: stop
-			sudo rm -rf elephant/* tiger/* horse/* monkey/*
+			sudo rm -rf elephant/* tiger/* horse/* monkey/* mysqldb/*
 
 shell:
 			docker-compose exec --user hdfs elephant bash
