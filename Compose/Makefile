@@ -15,5 +15,11 @@ clean: stop
 shell:
 			docker-compose exec --user hdfs elephant bash
 
+rootshell:
+			docker-compose exec --user root elephant bash
+
+dbshell:
+			docker-compose exec --user root elephant bash
+
 logs:
 			docker-compose logs -f
