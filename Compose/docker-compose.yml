@@ -71,5 +71,19 @@ services:
     ports:
       - 19888:19888
 
+  mysqldb:
+    image: mysql:latest
+    tty: true
+    hostname: mysqldb
+    environment:
+      - MYSQL_ROOT_PASSWORD=password123
+    volumes:
+      - ./shared:/shared
+      - ./mysqldb:/var/lib/mysql
+    networks:
+      - hadoop
+    ports:
+      - 3306:3306
+
 networks:
   hadoop:

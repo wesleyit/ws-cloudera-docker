@@ -28,3 +28,8 @@ RUN yum install -y spark-master.noarch  \
 RUN yum install -y hive hive-hbase impala impala-server \
 			impala-state-store impala-catalog impala-shell 
 
+# -- This is new
+
+RUN yum install -y sqoop mysql-connector-java mysql
+RUN ln -s /usr/share/java/mysql-connector-java.jar /usr/lib/sqoop/lib/
+
