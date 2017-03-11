@@ -19,7 +19,7 @@ rootshell:
 			docker-compose exec --user root elephant bash
 
 dbshell:
-			docker-compose exec --user root elephant bash
+			docker-compose exec --user root mysqldb bash
 
 logs:
 			docker-compose logs -f
