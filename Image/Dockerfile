@@ -33,3 +33,5 @@ RUN yum install -y hive hive-hbase impala impala-server \
 RUN yum install -y sqoop mysql-connector-java mysql
 RUN ln -s /usr/share/java/mysql-connector-java.jar /usr/lib/sqoop/lib/
 
+RUN yum install -y flume-ng flume-ng-agent
+
